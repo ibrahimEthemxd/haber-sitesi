@@ -1,0 +1,83 @@
+<div class="category-container">
+  <aside class="filter">
+    <h3>Filtreler</h3>
+
+    <label>
+      <input
+        type="checkbox"
+        [(ngModel)]="onlyWithImage"
+        (change)="applyFilters()"
+      />
+      Sadece görseli olan haberler
+    </label>
+
+    <label>
+      Yazar Adı:
+      <input
+        type="text"
+        [(ngModel)]="authorFilter"
+        (input)="applyFilters()"
+        placeholder="Yazar ismi"
+      />
+    </label>
+
+    <label>
+      Haber Başlığı:
+      <input
+        type="text"
+        [(ngModel)]="titleFilter"
+        (input)="applyFilters()"
+        placeholder="Başlıkta ara"
+      />
+    </label>
+
+    <label>
+      Başlangıç Tarihi:
+      <input
+        type="date"
+        [(ngModel)]="startDateFilter"
+        (change)="applyFilters()"
+      />
+    </label>
+
+    <label>
+      Bitiş Tarihi:
+      <input
+        type="date"
+        [(ngModel)]="endDateFilter"
+        (change)="applyFilters()"
+      />
+    </label>
+  </aside>
+
+  <section class="news-content">
+    <h2>{{ categoryName | titlecase }} Haberleri</h2>
+
+    <div class="category-news">
+      <div
+        class="news-card"
+        *ngFor="
+          let news of filteredNewsList.slice(
+            (currentPage - 1) * pageSize,
+            currentPage * pageSize
+          )
+        "
+      >
+        <img [src]="news.urlToImage" *ngIf="news.urlToImage" />
+        <h3>{{ news.title }}</h3>
+        <p>{{ news.description }}</p>
+        <small
+          >Yazar: {{ news.author || "Bilinmiyor" }} | Tarih:
+          {{ news.publishedAt | date : "mediumDate" }}</small
+        >
+        <a [href]="news.url" target="_blank">Haberi Oku</a>
+      </div>
+    </div>
+
+    <app-pagination
+      [totalPages]="totalPagesArray.length"
+      [currentPage]="currentPage"
+      (pageChanged)="changePage($event)"
+    ></app-pagination>
+  </section>
+</div>

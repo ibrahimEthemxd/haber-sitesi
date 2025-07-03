@@ -1,0 +1,16 @@
+<header>
+  <div class="top-bar">
+    <a class="logo" routerLink="/">İBRAHİM ETHEM ÖZTÜRK</a>
+
+    <div class="search">
+      <input type="text" placeholder="Haber ara..." [(ngModel)]="searchTerm" />
+      <button (click)="search()">Ara</button>
+    </div>
+  </div>
+
+  <nav class="category-nav">
+    <a *ngFor="let cat of categories" [routerLink]="['/category', cat]">
+      {{ cat | titlecase }}
+    </a>
+  </nav>
+</header>

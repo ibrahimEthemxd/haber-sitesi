@@ -1,0 +1,13 @@
+<section class="slider-section">
+  <app-slider-news [newsList]="sliderNews"></app-slider-news>
+</section>
+
+<section class="news-list">
+  <app-news-card *ngFor="let news of newsList" [article]="news"></app-news-card>
+</section>
+
+<app-pagination
+  [totalPages]="totalPagesArray.length"
+  [currentPage]="currentPage"
+  (pageChanged)="changePage($event)"
+></app-pagination>

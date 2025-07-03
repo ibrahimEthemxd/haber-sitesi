@@ -1,0 +1,29 @@
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+  padding: 40px;
+  max-width: 1080px;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+button:hover:not(.active) {
+  background-color: #aaa;
+}

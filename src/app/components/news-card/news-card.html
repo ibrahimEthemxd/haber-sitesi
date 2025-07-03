@@ -1,0 +1,13 @@
+<div class="news-card">
+  <img class="news-img" [src]="article.urlToImage" alt="Haber Görseli" *ngIf="article.urlToImage" />
+  <div class="news-content">
+    <h2 class="news-title">{{ article.title }}</h2>
+    <p class="news-meta">
+      <strong>Yazar:</strong> {{ article.author || 'Bilinmiyor' }} <br />
+      <strong>Kaynak:</strong> {{ article.source?.name || '-' }} <br />
+      <strong>Yayın:</strong> {{ article.publishedAt | date: 'medium' }}
+    </p>
+    <p class="news-desc">{{ article.description }}</p>
+    <a class="news-link" [href]="article.url" target="_blank">→ Habere Git</a>
+  </div>
+</div>

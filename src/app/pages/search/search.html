@@ -1,0 +1,13 @@
+<div class="search-results">
+  <div class="news-card" *ngFor="let news of newsList">
+    <img [src]="news.urlToImage" *ngIf="news.urlToImage" />
+    <h3>{{ news.title }}</h3>
+    <p>{{ news.description }}</p>
+    <a [href]="news.url" target="_blank">Haberi Oku</a>
+  </div>
+</div>
+<app-pagination
+  [totalPages]="totalPagesArray.length"
+  [currentPage]="currentPage"
+  (pageChanged)="changePage($event)"
+></app-pagination>

@@ -1,0 +1,25 @@
+<div class="slider-container" *ngIf="newsList.length > 0">
+  <div
+    class="slide"
+    *ngFor="let news of newsList; let i = index"
+    [class.active]="i === currentIndex"
+  >
+    <img [src]="news.urlToImage" alt="haber görseli" />
+    <div class="slide-overlay">
+      <h2>{{ news.title }}</h2>
+      <a [href]="news.url" target="_blank">Habere Git</a>
+    </div>
+  </div>
+
+  <button class="nav-button left" (click)="prevSlide()">&#10094;</button>
+  <button class="nav-button right" (click)="nextSlide()">&#10095;</button>
+
+  <div class="dots">
+    <span
+      class="dot"
+      *ngFor="let news of newsList; let i = index"
+      [class.active]="i === currentIndex"
+      (click)="goToSlide(i)"
+    ></span>
+  </div>
+</div>
